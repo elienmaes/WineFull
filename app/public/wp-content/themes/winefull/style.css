@@ -1,0 +1,15 @@
+/*
+ * Theme Name: Winefull with Timber
+ * Description: Starter Theme to use with Timber
+ * Author: Elien Maes
+ * Version: 0.1
+ * Requires PHP: 7.4.1
+ * Tested up to: 5.7.2
+ * Requires at least: 5.0
+ * License: GNU General Public License v2 or later
+ * Text Domain: winefull
+*/
+
+body{
+  background-color: #ECEEE9;
+}
