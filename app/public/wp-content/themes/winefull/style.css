@@ -9,6 +9,32 @@
  * License: GNU General Public License v2 or later
  * Text Domain: winefull
 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #ECEEE9;
+}
+
+.header-wrapper {
+  background-color: #3E5923;
+}
+
+.nav-menu {
+  display: flex;
+}
+.nav-menu .menu-item {
+  display: flex;
+  list-style: none;
+}
+.nav-menu .menu-item a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.bold {
+  font-weight: 700;
 }
