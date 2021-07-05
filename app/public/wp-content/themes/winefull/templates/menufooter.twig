@@ -1,0 +1,21 @@
+{% if menuFooter %}
+	<ul class="flex">
+	{% for item in items %}
+        {% if item.current %}
+            <li class="{{ item.classes | join(' ') }} font-bold list-none flex">
+                <a target="{{ item.target }}" href="{{ item.link }}" class="mr-3 no-underline text-textcolor">{{ item.title }}</a>
+                {% if item.children %}
+                    {% include "menu.twig" with {'items': item.children} %}
+                {% endif %}
+            </li>
+        {% else %}
+            <li class="{{ item.classes | join(' ') }}">
+                <a target="{{ item.target }}" href="{{ item.link }}"" class="mr-3">{{ item.title }}</a>
+                {% if item.children %}
+                    {% include "menu.twig" with {'items': item.children} %}
+                {% endif %}
+            </li>
+        {% endif %}
+	{% endfor %}
+	</ul>
+{% endif %}

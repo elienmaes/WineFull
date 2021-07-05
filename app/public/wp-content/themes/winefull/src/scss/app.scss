@@ -11,32 +11,14 @@
  * License: GNU General Public License v2 or later
  * Text Domain: winefull
 */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
 }
 
-body{
-  background-color: #ECEEE9;
-}
-.header-wrapper {
-    background-color: #3E5923;
-    
-}
-.nav-menu{
-    display: flex;
-
-    .menu-item{
-        display: flex;
-        list-style: none;
-        a{
-            text-decoration: none;
-            color:#fff;
-    
-        }
-    }
-}
-.bold{
-    font-weight: 700;
-}

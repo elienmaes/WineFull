@@ -6,18 +6,21 @@
 	</head>
 {% endblock %}
 
-	<body class="{{body_class}}" data-template="base.twig">
+	<body class="{{body_class}} bg-body" data-template="base.twig">
 		<header class="header" >
 			{% block header %}
-				<div class="header-wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="{{site.url}}" rel="home">
-                            <img src="../screenshot.png" alt="">
-                            {{site.name}}
-                        </a>
-					</h1>
+				<div class="bg-navcolor px-8 sm:px-16 lg:px-16 2xl:px-32 3xl:px-44 flex items-end py-8">
+                    {% if custom_logo_url %}
+                         <a class="hdr-logo-link mr-12" href="{{site.url}}" rel="home">
+                             <img src="{{custom_logo_url}}" alt="{{site.name}}">
+                         </a>
+                    {% else %}
+                        <h1 class="hdr-logo" role="banner">
+                            <a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
+                        </h1>
+                    {% endif %}
 					<nav id="nav-main" class="nav-main" role="navigation">
-						{% include "menu.twig" with {'items': menu.get_items} %}
+						{% include "menu.twig" with {'items': menuPrimary.get_items} %}
 					</nav><!-- #nav -->
 				</div>
 			{% endblock %}
@@ -39,7 +42,9 @@
 
 		{% block footer %}
 			<footer id="footer">
-				{% include 'footer.twig' %}
+                <div class="bg-navcolor px-8 sm:px-16 lg:px-16 2xl:px-32 3xl:px-44">
+				    {% include 'footer.twig' %}
+                </div>
 			</footer>
 			{{ function('wp_footer') }}
 		{% endblock %}
