@@ -8,6 +8,12 @@
 /***/ (() => {
 
 // alert('goe bezig ELientje');
+var navIcon = document.querySelector('#nav-icon');
+var navItems = document.querySelector('#nav-items');
+navIcon.addEventListener('click', function (e) {
+  navIcon.classList.toggle('open');
+  navItems.classList.toggle('hidden');
+});
 
 /***/ }),
 

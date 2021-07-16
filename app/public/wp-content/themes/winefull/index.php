@@ -15,9 +15,13 @@
 
 $context          = Timber::context();
 $context['posts'] = new Timber\PostQuery();
+$context['test'] =['Elien Maes','pieter Van Zele', 'Seppe en Miel'];
+$context['post'] = new Timber\Post();
+$context['hero'] = get_the_post_thumbnail_url(get_the_ID(), 'full');
+$context["acf"] = get_field_objects($data["post"]->ID);
 $context['foo']   = 'bar';
 $templates        = array( 'index.twig' );
-if ( is_home() ) {
-	array_unshift( $templates, 'front-page.twig', 'home.twig' );
+if (is_home()) {
+    array_unshift($templates, 'front-page.twig', 'home.twig');
 }
-Timber::render( $templates, $context );
+Timber::render($templates, $context);

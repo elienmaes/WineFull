@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+{% block content %}
+<h1>Homepage in da house</h1>
+{% endblock %}
+{% block row %}
+    {% if post.meta('row') %}
+        {% for item in post.get_field('row') %}
+            <div class="mx-auto py-8 xl:py-20 px-8 sm:px-16 lg:px-16 2xl:px-32 3xl:px-44 flex flex-col-reverse lg:flex-row {% if item.align == 'left' %} {% else %} lg:flex-row-reverse {% endif %}">
+                <div class="flex flex-col w-full lg:w-1/2 {% if item.align == 'left' %} lg:mr-32 {% else %} lg:ml-32 {% endif %}">
+                    {% if item.image %}
+                        <h1 class="font-bold text-2xl mt-8 lg:text-4xl lg:mt-0 text-navcolor mb-4 lg:mb-10">{{item.title}}</h1>
+                    {% endif %}
+                    {% if item.image %}
+                        <div class="text-contentcolor">{{item.description}}</div>
+                    {% endif %}
+                </div>
+                {% if item.image %}
+                <img class="w-full lg:w-1/2" src="{{TimberImage(item.image).src}}" srcset="{{TimberImage(item.image).srcset}}" sizes="{{TimberImage(item.image).img_sizes}}" alt="{{item.title}}">         
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

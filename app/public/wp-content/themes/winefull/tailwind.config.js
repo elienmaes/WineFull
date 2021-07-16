@@ -7,6 +7,7 @@ module.exports = {
         body: "#ECEEE9",
         navcolor: "#3E5923",
         textcolor: "#F3F1F1",
+        contentcolor:"#10170A",
       },
       fontSize: {
        'xxxs': '0.5rem',

@@ -1,20 +1,12 @@
 {% if menuPrimary %}
-	<ul class="flex">
+	<ul class="lg:flex w-full lg:mt-0  mx-auto lg:mx-0 lg:text-2xl">
 	{% for item in items %}
-        {% if item.current %}
-            <li class="{{ item.classes | join(' ') }} mr-8 font-bold list-none flex  text-textcolor no-underline ">{{ item.title }}</a>
+            <li class="{{ item.classes | join(' ') }} w-1/2 mx-auto mr-8 mb-4 lg:mb-0 list-none flex no-underline text-textcolor {% if item.current %} font-bold {% else %}text-textcolor {% endif %}">
+                <a target="{{ item.target }}" href="{{ item.link }}" class=" ">{{ item.title }}</a>
                 {% if item.children %}
                     {% include "menu.twig" with {'items': item.children} %}
                 {% endif %}
             </li>
-        {% else %}
-            <li class="{{ item.classes | join(' ') }} mr-8">
-                <a target="{{ item.target }}" href="{{ item.link }}" class=" text-textcolor">{{ item.title }}</a>
-                {% if item.children %}
-                    {% include "menu.twig" with {'items': item.children} %}
-                {% endif %}
-            </li>
-        {% endif %}
 	{% endfor %}
 	</ul>
 {% endif %}

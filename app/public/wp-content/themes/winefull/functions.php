@@ -8,16 +8,6 @@
  * @since   Timber 0.1
  */
 
-/**
- * If you are installing Timber as a Composer dependency in your theme, you'll need this block
- * to load your dependencies and initialize Timber. If you are using Timber via the WordPress.org
- * plug-in, you can safely delete this block.
- */
-$composer_autoload = __DIR__ . '/vendor/autoload.php';
-if (file_exists($composer_autoload)) {
-    require_once $composer_autoload;
-    $timber = new Timber\Timber();
-}
 
 /**
  * This ensures that Timber is loaded and available as a PHP class.
@@ -96,6 +86,7 @@ class StarterSite extends Timber\Site
     public function add_to_context($context)
     {
         $context['custom_logo_url']  = wp_get_attachment_image_url(get_theme_mod('custom_logo'), 'full');
+        $context['hero'] = get_the_post_thumbnail_url(get_the_ID(), 'full');
         $context['menuPrimary']  = new Timber\Menu('primary');
         $context['menuFooter']  = new Timber\Menu('footer');
         $context['site']  = $this;
@@ -121,6 +112,8 @@ class StarterSite extends Timber\Site
          * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
          */
         add_theme_support('post-thumbnails');
+
+        add_image_size('hero-image', 1200);
 
         /*
          * Switch default core markup for search form, comment form, and comments
@@ -167,15 +160,6 @@ class StarterSite extends Timber\Site
         add_theme_support('custom-logo', $defaults);
     }
 
-    /** This Would return 'foo bar!'.
-     *
-     * @param string $text being 'foo', then returned 'foo bar!'.
-     */
-    public function myfoo($text)
-    {
-        $text .= ' bar!';
-        return $text;
-    }
 
     /** This is where you can add your own functions to twig.
      *
