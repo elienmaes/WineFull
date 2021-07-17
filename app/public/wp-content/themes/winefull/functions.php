@@ -57,6 +57,8 @@ class StarterSite extends Timber\Site
         add_filter('timber/twig', array( $this, 'add_to_twig' ));
         add_action('init', array( $this, 'register_post_types' ));
         add_action('init', array( $this, 'register_taxonomies' ));
+        add_action('widgets_init', array( $this, 'register_widgets' ));
+
         parent::__construct();
     }
 
@@ -89,6 +91,7 @@ class StarterSite extends Timber\Site
         $context['hero'] = get_the_post_thumbnail_url(get_the_ID(), 'full');
         $context['menuPrimary']  = new Timber\Menu('primary');
         $context['menuFooter']  = new Timber\Menu('footer');
+        $context['footer_form'] = Timber::get_widgets('footer_form');
         $context['site']  = $this;
         return $context;
     }
@@ -170,6 +173,19 @@ class StarterSite extends Timber\Site
         $twig->addExtension(new Twig\Extension\StringLoaderExtension());
         $twig->addFilter(new Twig\TwigFilter('myfoo', array( $this, 'myfoo' )));
         return $twig;
+    }
+
+    public function register_widgets()
+    {
+        register_sidebar(array(
+        'name' => __('Footer Sidebar', 'footer_form'),
+        'id' => 'footer_form',
+        'description' => __('Description', 'footer_form'),
+        'before_widget' => '<li class="widget">',
+        'after_widget' => '</li>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ));
     }
 }
 
